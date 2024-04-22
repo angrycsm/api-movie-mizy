@@ -1,0 +1,44 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["debian-openssl-1.1.x"]
+  engineType    = "binary"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("user")
+}
+
+model CategoryFilm {
+  id String @id @default(uuid())
+  name String @unique
+  details String?
+  films Film[]
+
+  @@map("category_films")
+}
+
+model Film {
+  id Int @id @default(autoincrement())
+  name String 
+  details String?
+  driveUrl String @map("drive_url")
+  imageUrl String @map("image_url")
+  createdAt DateTime @default(now()) @map("created_at")
+  slug String
+  categoryId String
+  category_films CategoryFilm @relation(fields: [categoryId], references: [id])
+
+  @@index([name], name: "film_name_index")
+  @@unique([name, driveUrl, imageUrl, slug])
+  @@map("films")
+}
