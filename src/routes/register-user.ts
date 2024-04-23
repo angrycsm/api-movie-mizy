@@ -5,7 +5,7 @@ import { prisma } from "../lib/prisma";
 
 export async function registerUser(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(
-		"/",
+		"/signup",
 		{
 			schema: {
 				body: z.object({
