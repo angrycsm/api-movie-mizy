@@ -45,7 +45,7 @@ model Movie {
   categoryId    String @map("category_id")
   movieCategory MovieCategory @relation(fields: [categoryId], references: [id])
   emailCreatedMovieInCategory String
-  userCreatedMovieInCategory User @relation(fields: [emailUser], references: [email])
+  userCreatedMovieInCategory User @relation(fields: [emailCreatedMovieInCategory], references: [email])
 
   @@unique([categoryId, name, driveUrl, imageUrl])
   @@map("movies")
