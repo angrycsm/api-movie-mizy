@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
+import { prisma } from "/home/runner/mm-backend/src/lib/prisma";
 
 export async function registerUser(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(
@@ -23,6 +23,16 @@ export async function registerUser(app: FastifyInstance) {
 		async (request: FastifyRequest, reply: FastifyReply) => {
 			const { email, name } = request.body;
 
+			const checkingIfTheUserAlreadyExists = await prisma.user.findUnique({
+				where: {
+					email,
+				},
+			});
+
+			if (checkingIfTheUserAlreadyExists !== null) {
+				return reply.status(409).send({ message: "User already registered" });
+			}
+
 			const user = await prisma.user.create({
 				data: {
 					email,
@@ -31,6 +41,6 @@ export async function registerUser(app: FastifyInstance) {
 			});
 
 			return reply.status(201).send({ userId: user.id });
-		}
+		},
 	);
 }

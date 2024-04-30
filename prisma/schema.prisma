@@ -14,30 +14,39 @@ model User {
   email     String   @unique
   name      String?
   createdAt DateTime @default(now()) @map("created_at")
+  createdMovies Movie[]
+  createdCategorys MovieCategory[]
 
   @@map("user")
 }
 
 model MovieCategory {
-  id      Int  @id @default(autoincrement())
+  id      String  @id @default(uuid())
   name    String @unique
   details String?
+  emailCreatedCategory String
+  userCreatedCategory User @relation(fields: [emailCreatedCategory], references: [email])
+  createdAt DateTime @default(now()) @map("created_at")
   movies  Movie[]
 
-  @@map("movie_category")
+
+  
+  @@map("movie_category")  
 }
 
 model Movie {
   id            String           @id @default(uuid())
   name          String
   details       String?
-  driveUrl      String @unique       @map("drive_url")
-  imageUrl      String @unique       @map("image_url")
+  driveUrl      String      @map("drive_url")
+  imageUrl      String      @map("image_url")
   createdAt     DateTime      @default(now()) @map("created_at")
   slug          String @unique
-  categoryId    Int
+  categoryId    String @map("category_id")
   movieCategory MovieCategory @relation(fields: [categoryId], references: [id])
+  emailCreatedMovieInCategory String
+  userCreatedMovieInCategory User @relation(fields: [emailUser], references: [email])
 
-  @@index([name], map: "film_name_index")
+  @@unique([categoryId, name, driveUrl, imageUrl])
   @@map("movies")
 }
