@@ -5,7 +5,7 @@ import { prisma } from "/home/runner/mm-backend/src/lib/prisma";
 
 export async function getCategorys(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().get(
-		"/movie-category",
+		"/movie-category/categorys",
 		{
 			schema: {
 				response: {
