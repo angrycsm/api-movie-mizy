@@ -42,7 +42,7 @@
 - [ ] Update Movie In Category 
 - [ ] Delete Movie In Category
 
-## Technologys
+## Technologys 
 The following tools were used to build the project:
 
 - [Node.js](https://nodejs.org/en/)
