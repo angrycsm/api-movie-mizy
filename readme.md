@@ -16,9 +16,8 @@
  <a href="#goal">Goal</a> •
  <a href="#features">Features</a>
  <a href="#technologys">Technologys</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
- <a href="#autor">Autor</a>
+ <a href="#requirements">Requirements</a> • 
+ <a href="#lecenca">Licença</a>
 </p>
 
 ## Goal
@@ -52,21 +51,25 @@ The following tools were used to build the project:
 - [Zod](https://zod.dev/)
 - [Prisma](https://www.prisma.io/)
 
-## Autor
+## Requirements
 
-<a href="https://blog.rocketseat.com.br/author/thiago/">
- <img style="border-radius: 50%;" src="https://app.rocketseat.com.br/me/gabriel-moraes-03176" width="100px;" alt=""/>
- <br />
- <sub><b>Thiago Marinho</b></sub></a> <a href="https://blog.rocketseat.com.br/author/thiago//" title="Rocketseat">🚀</a>
+Before starting, you will need to have the following tools installed on your machine:
+ [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+ Furthermore, it's good to have an editor to work with the code like [VSCode](https://code.visualstudio.com/)
 
+### Running the Back End (server)
 
-Feito com ❤️ por Thiago Marinho 👋🏽 Entre em contato!
+```bash
+# Clone this repository
+$ git clone <https://github.com/angrycsm/api-movie-mizy>
 
-[![Twitter Badge](https://img.shields.io/badge/-@tgmarinho-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/tgmarinho)](https://twitter.com/tgmarinho) [![Linkedin Badge](https://img.shields.io/badge/-Thiago-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/tgmarinho/) 
-[![Gmail Badge](https://img.shields.io/badge/-tgmarinho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:tgmarinho@gmail.com)
+# Access the project folder in terminal/cmd
+$ cd api-movie-mizy 
 
+# Install dependencies
+$ npm install
 
+# Run the application in development mode
+$ npm run dev
 
-
-
-
+# The server will start on port:3333 - access <http://localhost:3333>
