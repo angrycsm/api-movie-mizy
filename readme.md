@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center"> MIZY</h1>
-<p align="center">API para um website de filmes, contendo, criação de categorias de filmes, criação de filmes em uma categoria e usuários. 💜</p>
+<p align="center"> API for a movie website, containing, creation of movie categories, creation of movies in a category and users. 💜</p>
 
 <p align='center'>
 <img src="https://img.shields.io/static/v1?label=API&message=Mizy&color=7159c1&style=for-the-badge&logo=prisma"/>
