@@ -3,4 +3,4 @@
 </p>
 
 <h1 align="center"> MIZY</h1>
-<p align="center">🚀 lib para construir interfaces do usuário com componentes reutilizáveis</p>
+<p align="center">API para um website de filmes, contendo, criação de categorias de filmes, criação de filmes em uma categoria e usuários. 💜</p>
