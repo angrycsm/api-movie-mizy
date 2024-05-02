@@ -5,4 +5,4 @@
 <h1 align="center"> MIZY</h1>
 <p align="center">API para um website de filmes, contendo, criação de categorias de filmes, criação de filmes em uma categoria e usuários. 💜</p>
 
-<img src="https://img.shields.io/static/v1?label=API&message=Mizy&color=7159c1&style=for-the-badge&logo=FastAPI"/>
+<img src="https://img.shields.io/static/v1?label=API&message=Mizy&color=7159c1&style=for-the-badge&logo=testinglibrary"/>
