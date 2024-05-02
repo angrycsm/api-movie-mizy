@@ -34,7 +34,15 @@
 - [x] Create Movie Category
 - [x] Get Movies Categorys
 - [ ] Update Movie Cateogory
-- [ ] Delete User
+- [ ] Delete Movie Category
+#### Movie In Category
+- [x] Create Movie In Category
+- [x] Get Movies In Category
+- [x] Get Single Movie In Category
+- [ ] Update Movie In Category 
+- [ ] Delete Movie In Category
+
+
 
 
 
