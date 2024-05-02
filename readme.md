@@ -15,7 +15,7 @@
 <p align="center">
  <a href="#goal">Goal</a> •
  <a href="#features">Features</a>
- <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#technology">Technologys</a> • 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
  <a href="#autor">Autor</a>
@@ -41,6 +41,16 @@
 - [x] Get Single Movie In Category
 - [ ] Update Movie In Category 
 - [ ] Delete Movie In Category
+
+## Technologys
+The following tools were used to build the project:
+
+- [Node.js](https://nodejs.org/en/)
+- [Fastify](https://fastify.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Zod](https://zod.dev/)
+- [Prisma](https://www.prisma.io/)
+
 
 
 
