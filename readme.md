@@ -22,7 +22,7 @@
 </p>
 
 ## Goal
-The purpose of the API is for a movie website, where the user can register and watch movies, enjoy movies, save movies, but the user will not be able to create movie categories, much less movies in a category, so who will be responsible for administration will be the superior user who will create categories, and films within these categories
+The purpose of the API is for a movie website, where the user can register and watch movies, enjoy movies, save movies, but the user will not be able to create movie categories, much less movies in a category, so who will be responsible for administration will be the superior user who will create categories, and films within these categories. 
 
 ## Features
 ### Crud Mizy API
