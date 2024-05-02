@@ -14,7 +14,7 @@
 
 <p align="center">
  <a href="#goal">Goal</a> •
- <a href="#tecnologias">Tecnologias</a> •
+ <a href="#project-status">Project Status</a> •
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
@@ -22,3 +22,9 @@
 </p>
 
 ## Goal
+
+## Project Status
+
+<h4 align="center"> 
+	Mizy construção... 
+</h4>
