@@ -7,4 +7,4 @@
 
 <img src="https://img.shields.io/static/v1?label=API&message=Mizy&color=7159c1&style=for-the-badge&logo=prisma"/>
 
-[![GitHub branches](https://badgen.net/github/branches/Naereen/Strapdown.js)](https://github.com/Naereen/Strapdown.js/)
+[![GitHub branches](https://badgen.net/github/branches/Naereen/Strapdown.js)](https://github.com/angrycsm/api-movie-mizy/)
