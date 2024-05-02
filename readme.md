@@ -9,7 +9,7 @@
 <img src="https://img.shields.io/static/v1?label=API&message=Mizy&color=7159c1&style=for-the-badge&logo=prisma"/>
 
 [![TypeScript](https://img.shields.io/badge/--3178C6?logo=typescript&logoColor=ffffff)](https://www.typescriptlang.org/)
-[![Zod](https://img.shields.io/badge/--3178C6?logo=zod&logoColor=ffffff)]()
+[![Zod](https://img.shields.io/badge/--10b981?logo=zod&logoColor=ffffff)]()
 </p>
 
 <p align="center">
