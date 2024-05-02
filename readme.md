@@ -15,7 +15,7 @@
 <p align="center">
  <a href="#goal">Goal</a> •
  <a href="#features">Features</a>
- <a href="#technology">Technologys</a> • 
+ <a href="#technologys">Technologys</a> • 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
  <a href="#autor">Autor</a>
