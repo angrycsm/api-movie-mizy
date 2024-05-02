@@ -30,6 +30,12 @@
 - [x] Get User
 - [x] Update User
 - [ ] Delete User
+#### Movie Category
+- [x] Create Movie Category
+- [x] Get Movies Categorys
+- [ ] Update Movie Cateogory
+- [ ] Delete User
+
 
 
 
