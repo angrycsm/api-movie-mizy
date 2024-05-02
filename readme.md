@@ -14,7 +14,7 @@
 
 <p align="center">
  <a href="#goal">Goal</a> •
- <a href="#project-status">Project Status</a> •
+ <a href="#features">Features</a>
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
@@ -23,8 +23,13 @@
 
 ## Goal
 
-## Project Status
+## Features
+### Crud Mizy API
+#### Users
+- [x] Create User
+- [x] Get User
+- [x] Update User
+- [ ] Delete User
 
-<h4 align="center"> 
-	Mizy construção... 
-</h4>
+
+
