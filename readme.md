@@ -14,7 +14,7 @@
 
 <p align="center">
  <a href="#goal">Goal</a> •
- <a href="#roadmap">Roadmap</a> • 
+ <a href="#tecnologias">Tecnologias</a> •
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#contribuicao">Contribuição</a> • 
  <a href="#licenc-a">Licença</a> • 
