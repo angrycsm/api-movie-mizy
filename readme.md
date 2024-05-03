@@ -8,17 +8,16 @@
 <p align='center'>
 <img src="https://img.shields.io/static/v1?label=API&message=Mizy&color=7159c1&style=for-the-badge&logo=prisma"/>
 
-[![TypeScript](https://img.shields.io/badge/--3178C6?logo=typescript&logoColor=ffffff)](https://www.typescriptlang.org/)
-[![Zod](https://img.shields.io/badge/--10b981?logo=zod&logoColor=ffffff)]()
 </p>
+
+<img src="https://img.shields.io/badge/license-MIT-blue"/>
 
 <p align="center">
  <a href="#goal">Goal</a> •
- <a href="#features">Features</a>
+ <a href="#features">Features</a> •
  <a href="#technologys">Technologys</a> • 
- <a href="#requirements">Requirements</a> • 
- <a href="#lecenca">Licença</a>
-</p>
+ <a href="#requirements">Requirements</a>
+
 
 ## Goal
 The purpose of the API is for a movie website, where the user can register and watch movies, enjoy movies, save movies, but the user will not be able to create movie categories, much less movies in a category, so who will be responsible for administration will be the superior user who will create categories, and films within these categories. 
