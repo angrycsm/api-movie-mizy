@@ -2,6 +2,7 @@ import { z } from "zod";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { prisma } from "/home/runner/mm-backend/src/lib/prisma";
+import { generateToken } from "/home/runner/mm-backend/src/utils/generate-token-jwt";
 
 export async function registerUser(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -16,6 +17,7 @@ export async function registerUser(app: FastifyInstance) {
         response: {
           201: z.object({
             userId: z.number(),
+            token: z.string(),
           }),
         },
       },
@@ -40,7 +42,9 @@ export async function registerUser(app: FastifyInstance) {
         },
       });
 
-      return reply.status(201).send({ userId: user.id });
+      const token = generateToken({ userId: user.id });
+
+      return reply.status(201).send({ userId: user.id, token });
     },
   );
 }
