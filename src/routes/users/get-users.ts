@@ -31,4 +31,3 @@ export async function getUsers(app: FastifyInstance) {
 			return reply.status(200).send({ users });
 		},
 	);
-}

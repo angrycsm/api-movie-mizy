@@ -11,6 +11,7 @@ import { getUsers } from '/home/runner/mm-backend/src/routes/users/get-users';
 import { getCategorys } from '/home/runner/mm-backend/src/routes/movie-category/get-categorys';
 import { getMoviesInCategory } from "/home/runner/mm-backend/src/routes/movie-in-a-category/get-movies-in-category";
 import { getMultipleMoviesFromASingleCategory } from "/home/runner/mm-backend/src/routes/movie-in-a-category/get-multiple-movies-from-a-single-category"
+import { updateAFieldForASingleUser } from "/home/runner/mm-backend/src/routes/users/update-a-field-for-a-single-user"
 
 const app = Fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -25,6 +26,8 @@ app.register(getCategorys);
 app.register(getUsers);
 app.register(getMoviesInCategory);
 app.register(getMultipleMoviesFromASingleCategory)
+
+app.register(updateAFieldForASingleUser);
 
 app.listen({ port: 3333 }).then(() => {
 	console.log("Servidor iniciado na porta 3333");

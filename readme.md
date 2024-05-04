@@ -1,1 +1,0 @@
-[ ] create a slug for the movie and category template 

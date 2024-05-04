@@ -34,7 +34,6 @@ export async function registerUser(app: FastifyInstance) {
       if (checkingIfTheUserAlreadyExists !== null) {
         return reply.status(409).send({ message: "User already registered" });
       }
-      
 
       const user = await prisma.user.create({
         data: {
@@ -43,7 +42,7 @@ export async function registerUser(app: FastifyInstance) {
         },
       });
 
-      const token = generateToken({ userId: user.id })
+      const token = generateToken({ userId: user.id });
 
       return reply.status(201).send({ userId: user.id, token });
     },
