@@ -2,18 +2,18 @@ import Fastify from "fastify";
 import {
 	serializerCompiler,
 	validatorCompiler,
-	ZodTypeProvider
+	ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { registerUser } from "/home/runner/mm-backend/src/routes/users/register-user";
 import { createMovieCategory } from "/home/runner/mm-backend/src/routes/movie-category/create-movie-category";
 import { createMovieInCategory } from "/home/runner/mm-backend/src/routes/movie-in-a-category/create-a-movie-in-the-category";
-import { getUsers } from '/home/runner/mm-backend/src/routes/users/get-users';
-import { getCategorys } from '/home/runner/mm-backend/src/routes/movie-category/get-categorys';
+import { getUsers } from "/home/runner/mm-backend/src/routes/users/get-users";
+import { getCategorys } from "/home/runner/mm-backend/src/routes/movie-category/get-categorys";
 import { getMoviesInCategory } from "/home/runner/mm-backend/src/routes/movie-in-a-category/get-movies-in-category";
-import { getMultipleMoviesFromASingleCategory } from "/home/runner/mm-backend/src/routes/movie-in-a-category/get-multiple-movies-from-a-single-category"
-import { updateAFieldForASingleUser } from "/home/runner/mm-backend/src/routes/users/update-a-field-for-a-single-user"
+import { getMultipleMoviesFromASingleCategory } from "/home/runner/mm-backend/src/routes/movie-in-a-category/get-multiple-movies-from-a-single-category";
+import { updateAFieldForASingleUser } from "/home/runner/mm-backend/src/routes/users/update-a-field-for-a-single-user";
 
-const app = Fastify().withTypeProvider<ZodTypeProvider>()
+const app = Fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
@@ -25,7 +25,7 @@ app.register(createMovieInCategory);
 app.register(getCategorys);
 app.register(getUsers);
 app.register(getMoviesInCategory);
-app.register(getMultipleMoviesFromASingleCategory)
+app.register(getMultipleMoviesFromASingleCategory);
 
 app.register(updateAFieldForASingleUser);
 

@@ -3,6 +3,8 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { prisma } from "/home/runner/mm-backend/src/lib/prisma";
 import { parseStringToNumber } from "/home/runner/mm-backend/src/utils/parse-string-to-number";
+import { generateToken } from "/home/runner/mm-backend/src/utils/generate-token-jwt";
+import jwt from "jsonwebtoken";
 
 export async function updateAFieldForASingleUser(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().patch(
@@ -24,6 +26,7 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
               name: z.string(),
               createdAt: z.number(),
             }),
+            token: z.string(),
           }),
         },
       },
@@ -31,6 +34,31 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
     async (request: FastifyRequest, reply: FastifyReply) => {
       const { id } = request.params;
       const { name, email } = request.body;
+      const authHeader = request.headers["authorization"];
+
+      parseStringToNumber(id)
+
+      console.log(request.params)
+      console.log(request.headers)
+      
+      const token = authHeader && authHeader.split("Bearer ")[1];
+
+      if (!token) {
+        return reply.status(401).send({ message: "Unauthorized" });
+      }
+
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
+      const userIdFromToken = decodedToken.userId.toString()
+      const idFromParams = id.toString()
+
+      if (userIdFromToken !== idFromParams) {
+        return reply
+          .status(403)
+          .send({ message: "Forbidden: You can only update your own profile" });
+      }
+
+      console.log(decodedToken)
 
       const findUser = await prisma.user.findUnique({
         where: {
@@ -58,7 +86,9 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
         },
       });
 
-      return reply.status(201).send({ user });
-    }
+      const newToken = generateToken({ userId: user.id });
+
+      return reply.status(201).send({ user, token: newToken });
+    },
   );
 }
