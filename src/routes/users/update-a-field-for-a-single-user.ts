@@ -4,6 +4,7 @@ import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { prisma } from "/home/runner/mm-backend/src/lib/prisma";
 import { parseStringToNumber } from "/home/runner/mm-backend/src/utils/parse-string-to-number";
 import { generateToken } from "/home/runner/mm-backend/src/utils/generate-token-jwt";
+import { userUpdateSchema, User } from "/home/runner/mm-backend/src/types/users-types/user-update-type"
 import jwt from "jsonwebtoken";
 
 export async function updateAFieldForASingleUser(app: FastifyInstance) {
@@ -11,21 +12,11 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
     "/user/:id",
     {
       schema: {
-        body: z.object({
-          name: z.string().optional(),
-          email: z.string().email().optional(),
-        }),
-        params: z.object({
-          id: z.string(),
-        }),
+        body: userUpdateSchema.pick({ name: true, email: true }),
+        params: userUpdateSchema.pick({ id: true }),
         response: {
           200: z.object({
-            user: z.object({
-              id: z.string(),
-              email: z.string().email(),
-              name: z.string(),
-              createdAt: z.number(),
-            }),
+            user: userUpdateSchema,
             token: z.string(),
           }),
         },
@@ -36,18 +27,13 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
       const { name, email } = request.body;
       const authHeader = request.headers["authorization"];
 
-      parseStringToNumber(id)
-
-      console.log(request.params)
-      console.log(request.headers)
-      
       const token = authHeader && authHeader.split("Bearer ")[1];
 
       if (!token) {
         return reply.status(401).send({ message: "Unauthorized" });
       }
 
-      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET as string);
 
       const userIdFromToken = decodedToken.userId.toString()
       const idFromParams = id.toString()
@@ -58,9 +44,7 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
           .send({ message: "Forbidden: You can only update your own profile" });
       }
 
-      console.log(decodedToken)
-
-      const findUser = await prisma.user.findUnique({
+      const findUser: User = await prisma.user.findUnique({
         where: {
           id: parseStringToNumber(id),
         },
@@ -76,7 +60,7 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
           .send({ message: "Bad Request: Missing request body" });
       }
 
-      const user = await prisma.user.update({
+      const user: User = await prisma.user.update({
         where: {
           id: parseStringToNumber(id),
         },
