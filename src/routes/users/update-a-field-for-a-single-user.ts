@@ -4,7 +4,11 @@ import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { prisma } from "/home/runner/mm-backend/src/lib/prisma";
 import { parseStringToNumber } from "/home/runner/mm-backend/src/utils/parse-string-to-number";
 import { generateToken } from "/home/runner/mm-backend/src/utils/generate-token-jwt";
-import { userUpdateSchema, User } from "/home/runner/mm-backend/src/types/users-types/user-update-type"
+import {
+  userUpdateSchema,
+  UserZodSchema,
+  UserPrisma,
+} from "/home/runner/mm-backend/src/types/users-types/user-update-type";
 import jwt from "jsonwebtoken";
 
 export async function updateAFieldForASingleUser(app: FastifyInstance) {
@@ -12,7 +16,7 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
     "/user/:id",
     {
       schema: {
-        body: userUpdateSchema.pick({ name: true, email: true }),
+        body: userUpdateSchema.pick({ name: true, email: true }).optional(),
         params: userUpdateSchema.pick({ id: true }),
         response: {
           200: z.object({
@@ -35,8 +39,14 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
 
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET as string);
 
-      const userIdFromToken = decodedToken.userId.toString()
-      const idFromParams = id.toString()
+      if (typeof decodedToken !== "object") {
+        return reply
+          .status(401)
+          .send({ message: "Unauthorized: Invalid Token" });
+      }
+
+      const userIdFromToken = decodedToken.userId.toString();
+      const idFromParams = id.toString();
 
       if (userIdFromToken !== idFromParams) {
         return reply
@@ -44,9 +54,9 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
           .send({ message: "Forbidden: You can only update your own profile" });
       }
 
-      const findUser: User = await prisma.user.findUnique({
+      const findUser: UserPrisma | null = await prisma.user.findUnique({
         where: {
-          id: parseStringToNumber(id),
+          id: parseInt(id),
         },
       });
 
@@ -54,15 +64,19 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
         return reply.status(404).send({ message: "User not found" });
       }
 
-      if (request.body === null || Object.keys(request.body).length === 0) {
+      if (
+        request.body === null ||
+        typeof request.body !== "object" ||
+        Object.keys(request.body).length === 0
+      ) {
         return reply
           .status(400)
           .send({ message: "Bad Request: Missing request body" });
       }
 
-      const user: User = await prisma.user.update({
+      const updatedUser: UserPrisma = await prisma.user.update({
         where: {
-          id: parseStringToNumber(id),
+          id: parseInt(id),
         },
         data: {
           name,
@@ -70,9 +84,9 @@ export async function updateAFieldForASingleUser(app: FastifyInstance) {
         },
       });
 
-      const newToken = generateToken({ userId: user.id });
+      const newToken = generateToken({ userId: updatedUser.id });
 
-      return reply.status(201).send({ user, token: newToken });
+      return reply.status(201).send({ user: updatedUser, token: newToken });
     },
   );
 }

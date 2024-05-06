@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-// Definição do esquema Zod para o usuário
 export const userUpdateSchema = z.object({
   id: z.string(),
   email: z.string().email().optional(),
@@ -8,5 +7,11 @@ export const userUpdateSchema = z.object({
   createdAt: z.number(),
 });
 
-// Definição do tipo User
-export type User = z.infer<typeof userUpdateSchema>;
+export type UserZodSchema = z.infer<typeof userUpdateSchema>;
+
+export interface UserPrisma {
+  id: string | number;
+  email: string;
+  name: string | null;
+  createdAt: string | Date;
+}
